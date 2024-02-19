@@ -4,6 +4,8 @@
 void l_push_back(List *p, int x)
 {
 	/* Энд оруулах үйлдлийг хийнэ үү */
+  p->l_len++;
+  p->l_arr[p->l_len -1] = x; 
 }
 
 /* p-ийн зааж буй List-д x утгыг эхэнд хийнэ
@@ -12,6 +14,12 @@ void l_push_back(List *p, int x)
 void l_push_front(List *p, int x)
 {
 	/* Энд оруулах үйлдлийг хийнэ үү */
+  p->l_len++;
+  int i;
+  for(i = p->l_len-1; i > 0; i --){
+    p->l_arr[i] = p->l_arr[i-1];
+  }
+  p->l_arr[0] = x;
 }
 
 /*
@@ -22,6 +30,12 @@ void l_push_front(List *p, int x)
 void l_insert(List *p, int x, int pos)
 {
 	/* Энд оруулах үйлдлийг хийнэ үү */
+  p->l_len++;
+  int i;
+  for (i = p->l_len-1; i > pos; i --){
+    p->l_arr[i]=p->l_arr[i-1];
+  }
+  p->l_arr[pos]=x;
 }
 
 
@@ -31,12 +45,18 @@ void l_insert(List *p, int x, int pos)
 void l_pop_front(List *p)
 {
 	/* Энд гаргах үйлдлийг хийнэ үү */
+  int i;
+  for(i=0; i<p->l_len - 1; i++) {
+    p->l_arr[i] = p->l_arr[i+1];
+  }
+  p->l_len--;
 }
 
 /* p-ийн зааж буй List-н төгсгөлөөс гаргана */
 void l_pop_back(List *p)
 {
 	/* Энд гаргах үйлдлийг хийнэ үү */
+  p->l_len--;
 }
 
 /* p-ийн зааж буй List-н pos байрлалаас гаргана.
@@ -46,6 +66,10 @@ void l_pop_back(List *p)
 void l_erase(List *p, int pos)
 {
 	/* Энд гаргах үйлдлийг хийнэ үү */
+  for(int  i = pos; i < p->l_len - 1; i++){
+    p->l_arr[i] = p->l_arr[i + 1];
+  }
+  p->l_len--;
 }
 
 /* p-ийн зааж буй List-н утгуудыг хэвлэнэ */
@@ -63,5 +87,11 @@ void l_print(List *p)
  */
 int l_search(List *p, int x)
 {
-	
+  for(int  i=0;i<p->l_len;i++){
+    if(p->l_arr[i]==x){
+      return i;
+    }
+  }
+
+  return -1;
 }

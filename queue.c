@@ -4,12 +4,19 @@
 void q_push(Queue *p, int x)
 {
         /* Энд оруулах үйлдлийг хийнэ үү */
+        p->q_len++;
+        p->q_arr[p->q_len-1]=x;
+
 }
 
 /* p-ийн зааж буй Queue-с гаргана */
 void q_pop(Queue *p)
 {
         /* Энд гаргах үйлдлийг хийнэ үү */
+        for (int i = 0; i<p->q_len;i++){
+                p->q_arr[i]=p->q_arr[i+1];
+        }
+        p->q_len--;
 }
 
 /* p-ийн зааж буй Queue-н утгуудыг хэвлэнэ */
