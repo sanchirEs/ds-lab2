@@ -102,3 +102,4 @@ gcc *.c -o lqs
     ```C
     int l_search(List *p, int x)
     ```
+# ds-lab2
