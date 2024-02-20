@@ -93,5 +93,4 @@ int l_search(List *p, int x)
     }
   }
 
-  return -1;
 }
